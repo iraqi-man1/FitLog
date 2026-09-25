@@ -3,6 +3,7 @@
 ## Runtime and data location
 
 - Apache serves the built React + TypeScript single-page app and `api/index.php` from the same XAMPP site folder. Vite builds relative asset paths so the site can live below `htdocs/FitLog`.
+- Deploy the contents of `dist`, including `.htaccess`; the Apache rules deny direct access to settings files and source directories if an earlier deployment copied the project into `htdocs`.
 - XAMPP MySQL stores records in database `fitlog`; import `database/fitlog.sql` with phpMyAdmin. `api/config.local.php` overrides the default local account when needed.
 - Progress photos are stored in `FitLog-data/photos` beside XAMPP's `htdocs` directory, outside Apache's document root. MySQL stores their metadata and generated filenames. No photo or record is sent to a remote service.
 - `src/data/repository.ts` is the frontend storage boundary. `public/api/index.php` owns HTTP, MySQL statements, transactions, and file storage. The optional Node API in `server/` supports Vite development.

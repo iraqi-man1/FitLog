@@ -18,10 +18,10 @@ if errorlevel 1 (
 )
 echo.
 set "FITLOG_SITE=%~1"
-if not defined FITLOG_SITE if exist "D:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=D:\xampp\htdocs\FitLog-main"
-if not defined FITLOG_SITE if exist "C:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=C:\xampp\htdocs\FitLog-main"
 if not defined FITLOG_SITE if exist "D:\xampp\htdocs\FitLog" set "FITLOG_SITE=D:\xampp\htdocs\FitLog"
 if not defined FITLOG_SITE if exist "C:\xampp\htdocs\FitLog" set "FITLOG_SITE=C:\xampp\htdocs\FitLog"
+if not defined FITLOG_SITE if exist "D:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=D:\xampp\htdocs\FitLog-main"
+if not defined FITLOG_SITE if exist "C:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=C:\xampp\htdocs\FitLog-main"
 if not defined FITLOG_SITE (
   echo Build complete. Pass your XAMPP site folder to start.bat to copy the app there.
   pause

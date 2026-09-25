@@ -1,0 +1,15 @@
+Options -Indexes
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "^(config\.local\.php|config\.example\.php)$">
+  Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(src|server|database|scripts|docs|data|node_modules|public)(/|$) - [F,L,NC]
+  RewriteRule ^(README\.md|ARCHITECTURE\.md|package(-lock)?\.json|start\.bat|tsconfig\.json|vite\.config\.ts)$ - [F,L,NC]
+</IfModule>
