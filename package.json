@@ -1,0 +1,42 @@
+{
+  "name": "fitlog-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "start": "vite preview --host 127.0.0.1",
+    "check": "tsc --noEmit",
+    "test:navigation": "node scripts/navigation-smoke.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/cairo": "latest",
+    "@fontsource-variable/manrope": "latest",
+    "@radix-ui/react-dialog": "latest",
+    "@radix-ui/react-slot": "latest",
+    "class-variance-authority": "latest",
+    "clsx": "latest",
+    "idb": "latest",
+    "jszip": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-calendar-heatmap": "latest",
+    "react-compare-slider": "latest",
+    "react-dom": "latest",
+    "recharts": "latest",
+    "tailwind-merge": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-calendar-heatmap": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "playwright": "^1.63.0",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="FitLog">
+  <rect width="48" height="48" rx="14" fill="#29495E"/>
+  <rect x="11" y="11" width="10" height="10" rx="3" fill="#E5F0F4"/>
+  <rect x="25" y="11" width="10" height="10" rx="3" fill="#E5F0F4" opacity=".55"/>
+  <rect x="11" y="25" width="10" height="10" rx="3" fill="#E5F0F4" opacity=".55"/>
+  <path d="m25.5 29.5 3.5 3.5 7.5-8.5" fill="none" stroke="#E5F0F4" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

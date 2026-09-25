@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/manrope/index.css';
+@import '@fontsource-variable/cairo/index.css';
+@import 'react-calendar-heatmap/dist/styles.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-danger: var(--danger);
+  --color-diet: var(--diet);
+  --color-weight: var(--weight);
+  --color-photo: var(--photo);
+}
+:root { font-family: 'Manrope Variable', sans-serif; font-synthesis: none; color-scheme: dark; --background:#111820; --surface:#1b2630; --surface-2:#24313c; --surface-3:#33424e; --foreground:#e8eff2; --muted:#a0b0b8; --line:#30414d; --accent:#9bbdd0; --accent-hover:#bad2df; --accent-ink:#142630; --danger:#e49a95; --diet:#c8b094; --weight:#8dbdb7; --photo:#b2a7c8; }
+:root[data-theme='light'] { color-scheme: light; --background:#f3f6f7; --surface:#ffffff; --surface-2:#edf2f4; --surface-3:#dee7eb; --foreground:#172833; --muted:#647984; --line:#d8e3e8; --accent:#3e6c89; --accent-hover:#315a74; --accent-ink:#ffffff; --danger:#bd625b; --diet:#926d46; --weight:#2d7a73; --photo:#716193; }
+:root[dir='rtl'] { font-family:'Cairo Variable', sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; min-width:320px; background:var(--background); color:var(--foreground); }
+button, input, select, textarea { font:inherit; }
+button { cursor:pointer; }
+::selection { background:var(--accent); color:var(--accent-ink); }
+.eyebrow { color:var(--accent); font-size:.68rem; font-weight:800; letter-spacing:.17em; text-transform:uppercase; }
+.muted { color:var(--muted); }
+.page-enter { animation:page-in .22s ease-out; }
+@keyframes page-in { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fade-in { from { opacity:0 } to { opacity:1 } }
+.animate-fade-in { animation:fade-in .2s ease-out; }
+.heatmap-scroll { overflow-x:auto; padding-bottom:5px; }
+.heatmap-scroll svg { min-width:680px; direction:ltr; }
+.react-calendar-heatmap { width:100%; }
+.react-calendar-heatmap text { fill:var(--muted); font-size:8px; font-family:inherit; }
+.heatmap-overall, .heatmap-gym { --heat-1:#3e5362; --heat-2:#6f91a6; --heat-3:#a4c4d4; }
+.heatmap-diet { --heat-1:#594a3d; --heat-2:#9c7c60; --heat-3:#d5b38c; }
+.heatmap-weight { --heat-1:#365455; --heat-2:#62938d; --heat-3:#9bc8c1; }
+:root[data-theme='light'] .heatmap-overall, :root[data-theme='light'] .heatmap-gym { --heat-1:#dce8ec; --heat-2:#92b5c7; --heat-3:#4c7894; }
+:root[data-theme='light'] .heatmap-diet { --heat-1:#eee3d7; --heat-2:#cba985; --heat-3:#986f4b; }
+:root[data-theme='light'] .heatmap-weight { --heat-1:#daece8; --heat-2:#91c1b9; --heat-3:#3f8b82; }
+.react-calendar-heatmap .color-empty, .react-calendar-heatmap .color-0 { fill:var(--surface-2); }
+.react-calendar-heatmap .color-1 { fill:var(--heat-1); }
+.react-calendar-heatmap .color-2 { fill:var(--heat-2); }
+.react-calendar-heatmap .color-3 { fill:var(--heat-3); }
+.react-calendar-heatmap rect { rx:2; ry:2; cursor:pointer; stroke:transparent; stroke-width:1; }
+.react-calendar-heatmap rect:hover { stroke:var(--foreground); }
+.react-calendar-heatmap rect:focus { outline:2px solid var(--accent); }
+.recharts-default-tooltip { background:var(--surface)!important; border:1px solid var(--line)!important; border-radius:12px!important; color:var(--foreground)!important; }
+.scrollbar-thin::-webkit-scrollbar { width:6px; height:6px; }.scrollbar-thin::-webkit-scrollbar-thumb { background:var(--surface-3); border-radius:6px; }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
