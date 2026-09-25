@@ -2,6 +2,18 @@
 
 A private, local fitness journal for one person. It runs on `127.0.0.1`, stores structured records and progress photos in the browser's IndexedDB, and makes no cloud or external API requests. PHP and XAMPP are not required.
 
+## Screenshots
+
+Screenshots below use generated demo records and contain no personal logs or photos.
+
+| Dashboard · dark | Weight progress |
+| --- | --- |
+| ![FitLog dashboard](docs/screenshots/dashboard-dark.png) | ![FitLog weight progress](docs/screenshots/weight-progress.png) |
+
+| Calendar | Settings |
+| --- | --- |
+| ![FitLog calendar](docs/screenshots/calendar.png) | ![FitLog settings](docs/screenshots/settings.png) |
+
 ## Install and run (Windows)
 
 1. Install Node.js 20.19+ once.
