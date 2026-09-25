@@ -6,6 +6,7 @@ dist/
 *-smoke.png
 .env
 .env.*
+!.env.example
 *.fitlog.zip
 *.sqlite
 *.sqlite3
@@ -14,3 +15,4 @@ dist/
 /backups/
 /exports/
 /photos/
+/data/

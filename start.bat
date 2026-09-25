@@ -5,6 +5,12 @@ if not exist node_modules (
   pause
   exit /b 1
 )
+node -e "const [major,minor]=process.versions.node.split('.').map(Number);if(major<24||(major===24&&minor<14))process.exit(1)"
+if errorlevel 1 (
+  echo FitLog needs Node.js 24.14 or newer.
+  pause
+  exit /b 1
+)
 call npm.cmd run build
 if errorlevel 1 (
   pause
