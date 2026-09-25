@@ -7,7 +7,7 @@
     "dev": "node scripts/dev.mjs",
     "server": "node --env-file-if-exists=.env server/index.mjs",
     "build": "tsc -b && vite build",
-    "start": "node --env-file-if-exists=.env server/index.mjs",
+    "start:node": "node --env-file-if-exists=.env server/index.mjs",
     "check": "tsc --noEmit",
     "test:navigation": "node scripts/navigation-smoke.mjs"
   },

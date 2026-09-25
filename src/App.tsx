@@ -34,7 +34,7 @@ export default function App() {
   const current = navigation.find(n => n.id === page)
   const openSearch = () => { if (/^\d{4}-\d{2}-\d{2}$/.test(search)) setDay(search) }
   const sidebar = <>
-    <div className="mb-9 flex items-center gap-3 px-2"><img src="/fitlog-mark.svg" alt="" className="h-11 w-11" /><span className="text-xl font-extrabold tracking-[-.055em]">fitlog</span></div>
+    <div className="mb-9 flex items-center gap-3 px-2"><img src={new URL('fitlog-mark.svg', new URL(import.meta.env.BASE_URL, location.href)).href} alt="" className="h-11 w-11" /><span className="text-xl font-extrabold tracking-[-.055em]">fitlog</span></div>
     <div className="mb-5 flex items-center gap-2 rounded-xl border border-line bg-surface-2 p-2 md:hidden"><input aria-label={t('Search date')} type="date" className="min-w-0 flex-1 bg-transparent text-xs outline-none" value={search} onChange={e => setSearch(e.target.value)} /><button onClick={() => { openSearch(); setMenu(false) }} className="text-xs font-bold text-accent">{t('Open')}</button></div>
     <nav className="space-y-0.5">{items.map(n => <button key={n.id} onClick={() => go(n.id)} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-start text-[13px] font-semibold transition-colors ${page === n.id ? 'bg-accent/12 text-accent' : 'text-muted hover:bg-surface-2 hover:text-foreground'}`}><n.icon size={18} strokeWidth={1.8} /><span>{t(n.label)}</span></button>)}</nav>
   </>

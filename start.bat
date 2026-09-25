@@ -17,6 +17,22 @@ if errorlevel 1 (
   exit /b 1
 )
 echo.
-echo Open http://127.0.0.1:4173/ in your browser.
-echo Keep this window open while using FitLog.
-call npm.cmd run start
+set "FITLOG_SITE=%~1"
+if not defined FITLOG_SITE if exist "D:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=D:\xampp\htdocs\FitLog-main"
+if not defined FITLOG_SITE if exist "C:\xampp\htdocs\FitLog-main" set "FITLOG_SITE=C:\xampp\htdocs\FitLog-main"
+if not defined FITLOG_SITE if exist "D:\xampp\htdocs\FitLog" set "FITLOG_SITE=D:\xampp\htdocs\FitLog"
+if not defined FITLOG_SITE if exist "C:\xampp\htdocs\FitLog" set "FITLOG_SITE=C:\xampp\htdocs\FitLog"
+if not defined FITLOG_SITE (
+  echo Build complete. Pass your XAMPP site folder to start.bat to copy the app there.
+  pause
+  exit /b 0
+)
+xcopy "dist\*" "%FITLOG_SITE%\" /E /I /Y >nul
+if errorlevel 1 (
+  echo Could not copy the build into %FITLOG_SITE%.
+  pause
+  exit /b 1
+)
+echo FitLog copied to %FITLOG_SITE%.
+echo Start Apache and MySQL in XAMPP, then open the site's localhost address.
+pause

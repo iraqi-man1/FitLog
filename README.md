@@ -1,6 +1,6 @@
 # FitLog
 
-A local-first fitness journal for one person. The React interface talks to a small Node.js API on `127.0.0.1`; workout records and settings live in XAMPP's local MySQL database, and progress photos stay in a local project folder. No cloud services or external APIs are used.
+A local-first fitness journal for one person. Apache serves the React interface and its PHP API; records and settings live in XAMPP MySQL. Progress photos remain on the computer. No cloud services or external APIs are used.
 
 ## Screenshots
 
@@ -16,14 +16,13 @@ Screenshots below use generated demo records and contain no personal logs or pho
 
 ## Install and run (Windows)
 
-1. Install XAMPP and start **MySQL** in the XAMPP Control Panel.
+1. Install XAMPP and start **Apache** and **MySQL** in the XAMPP Control Panel. Enable PHP extensions `pdo_mysql` and `fileinfo` if they are disabled.
 2. Open phpMyAdmin, select **Import**, and import `database/fitlog.sql`. This creates the `fitlog` database and its tables.
-3. Install Node.js 24.14 or newer. Run `npm ci` once while online to install dependencies.
-4. Copy `.env.example` to `.env`. Its defaults match XAMPP's usual local `root` account with no password. Edit `.env` if your MySQL credentials differ.
-5. Double-click `start.bat`, or run `npm run build` then `npm start`.
-6. Open **http://127.0.0.1:4173/**. Keep MySQL and the FitLog terminal running while using the app.
+3. Install Node.js 24.14 or newer for the build step. Run `npm ci` once while online. Double-click `start.bat` to build and copy into a detected XAMPP FitLog folder. You can also pass a site folder to the script, such as `start.bat "D:\xampp\htdocs\FitLog-main"`.
+4. For a manual deployment, run `npm run build` and copy **the contents of `dist`** into your XAMPP site folder. Include `api/index.php` and the `assets` folder. For the existing `D:\xampp\htdocs\FitLog-main` folder, open **http://localhost/FitLog-main/**.
+5. XAMPP's usual local `root` account with no password works by default. If your MySQL credentials differ, copy `dist/api/config.example.php` to `dist/api/config.local.php` and edit it, then copy that file to your XAMPP site's `api` folder. Keep it private.
 
-After setup, FitLog works without an internet connection. Structured data is stored in XAMPP MySQL (`127.0.0.1:3306/fitlog` by default); original photos are saved under `data/photos`. The Settings page shows the database connection and photo folder. Existing browser records are copied into MySQL the first time the app opens, if the database is empty. The `data` folder is ignored by Git so personal photos are not committed.
+After setup, FitLog works without an internet connection. Structured data is stored in XAMPP MySQL (`127.0.0.1:3306/fitlog` by default). Original photos are stored in `FitLog-data/photos` beside XAMPP's `htdocs` directory, outside the site folder. The Settings page shows the actual location. Existing browser records are copied into MySQL the first time the app opens, if the database is empty.
 
 ## Daily use
 
@@ -35,8 +34,8 @@ After setup, FitLog works without an internet connection. Structured data is sto
 
 ## Backups
 
-**Settings → Export Backup** creates a `.fitlog.zip` backup. Include photos for a complete archive. **Import Backup** validates the archive before replacing existing MySQL records. Settings also exports CSV files for weight, attendance, measurements, and workouts. To back up directly from phpMyAdmin, select the `fitlog` database and use **Export**; back up the `data/photos` folder separately.
+**Settings → Export Backup** creates a `.fitlog.zip` backup. Include photos for a complete archive. **Import Backup** validates the archive before replacing existing MySQL records. Settings also exports CSV files for weight, attendance, measurements, and workouts. To back up directly from phpMyAdmin, select the `fitlog` database and use **Export**; back up the photo folder shown in Settings separately.
 
 ## Development
 
-`npm run dev` starts the local API on port 4173 and Vite on port 5173. `npm run build` checks TypeScript and creates production assets in `dist/`. `npm start` serves the built app and API. Connection settings are read from `.env`; see `.env.example`. The schema is in `database/fitlog.sql`. The storage adapter is `src/data/repository.ts`, and calculations live in `src/lib/stats.ts`.
+`npm run build` checks TypeScript and creates production assets in `dist/`, including `api/index.php`. Vite uses relative asset paths so the app works in an XAMPP subfolder. For frontend development, `npm run dev` starts Vite and the optional Node API on ports 5173 and 4173; `.env` configures that development API. XAMPP production uses the PHP API and `api/config.local.php`. The schema is in `database/fitlog.sql`. The storage adapter is `src/data/repository.ts`, and calculations live in `src/lib/stats.ts`.
